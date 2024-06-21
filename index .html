@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table form in js</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+*{
+	margin: 0;
+	padding: 0;
+}
+.h1{
+    text-align:center;
+    margin-left: 290px;
+}
+
+.mainTable{
+	text-align: center;
+	margin-left: auto;
+    
+}
+#table{
+	margin: 5px auto;
+    font-size: 20px;
+}
+table tr:not(:first-child){
+	cursor: pointer;
+	transition: all .25s ease-in-out;
+}
+table tr:not(:first-child):hover{
+	background-color: #ddd;
+}
+
+table{
+    width: 60%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr:nth-child(odd){
+    background-color: lightgray;
+}
+
+
+.updateBtn{
+	text-align: center;
+}
+.updateBtn button{
+	background-color: rgb(0, 204, 255);
+	padding: 5px 10px;
+	border: 1px solid black;
+	color: white;
+	margin: 10px 0;
+	border-radius: 5px;
+}
+.updateBtn button:hover{
+	background: lightgray;
+	color: black;
+	transition: .5s;
+}
+
+
+.editTable{
+	display: none;
+	padding-top: 20px;
+	width: 30%;
+	margin: 0 auto;
+    font-size: 20px;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.editRowBtn{
+	background-color: #0DC143;
+	color: white;
+	border: 1px solid black;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+.editRowBtn:hover{
+	background-color: lightgray;
+	color: black;
+	transition: .5s;
+}
+ </style>
+
+</head>
+<body>
+    
+    <div class="maintable">
+        <center>
+        <h1>Data</h1>
+        </center>
+        <table id="table"border="1">
+
+            <tr>
+                <th>s.no</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>country</th>
+                <th>mobile number</th>
+            </tr>
+
+            <tr>
+                <td>01</td>
+                <td>sana</td>
+                <td>beggam</td>
+                <td>france</td>
+                <td>123456745</td>
+            </tr>
+             
+            <tr>
+                <td>02</td>
+                <td>rakesh</td>
+                <td>kumar</td>
+                <td>india</td>
+                <td>234567802</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>jim</td>
+                <td>vito</td>
+                <td>thailand</td>
+                <td>987654321</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>tom</td>
+                <td>johson</td>
+                <td>germany</td>
+                <td>234567451</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>petter</td>
+                <td>lewies</td>
+                <td>argentina</td>
+                <td>234516745</td>
+            </tr>
+            <tr>
+
+                <td>06</td>
+                <td>luis</td>
+                <td>brown</td>
+                <td>irak</td>
+                <td>234671455</td>
+            </tr>
+
+            <tr>
+                <td>07</td>
+                <td>michael</td>
+                <td>jill</td>
+                <td>united state</td>
+                <td>345622745</td>
+            </tr>
+
+            <tr>
+                <td>08</td>
+                <td>jack</td>
+                <td>jelly</td>
+                <td>australia</td>
+                <td>345621745</td>
+            </tr>
+
+        </table>
+    </div>
+     
+     <div class="updateBtn">
+        <button  onclick="editTableDisplay()">Update data</button>
+    </div>
+
+    <div class="editTable">
+        <div class="left">First Name: </div><div class="right"><input type="text" name="fname" id="fname"></div><br><br>
+        <div class="left">Last Name: </div><div class="right"><input type="text" name="lname" id="lname"></div><br><br>
+        <div class="left">Country: </div><div class="right"><input type="text" name="country" id="country"></div><br><br>
+        <div class="left">Mobile number: </div><div class="right"><input type="number" name="mNumber" id="mNumber"></div><br><br>
+        <button onclick="editRow();" class="editRowBtn">Update</button><br><br>
+    </div>        
+
+   <script>
+       var table = document.getElementById("table"),rIndex;
+
+       for(var i = 1; i < table.rows.length; i++){
+       table.rows[i].onclick = function(){
+        rIndex = this.rowIndex;
+        console.log(rIndex);
+
+        document.getElementById("fname").value = this.cells[1].innerHTML;
+        document.getElementById("lname").value = this.cells[2].innerHTML;
+        document.getElementById("country").value = this.cells[3].innerHTML;
+        document.getElementById("mNumber").value = this.cells[4].innerHTML;
+    };
+}
+
+
+
+function editRow(){
+    table.rows[rIndex].cells[1].innerHTML = document.getElementById("fname").value;
+    table.rows[rIndex].cells[2].innerHTML = document.getElementById("lname").value;
+    table.rows[rIndex].cells[3].innerHTML = document.getElementById("country").value;
+    table.rows[rIndex].cells[4].innerHTML = document.getElementById("mNumber").value;
+}
+
+
+function editTableDisplay(){
+    document.querySelector('.editTable').setAttribute('style', 'display: block;')
+}
+
+   </script>
+ 
+</body>
+</html>
+
